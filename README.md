@@ -5,10 +5,10 @@
 ![Institution](https://img.shields.io/badge/Institution-TUM-0065BD.svg)
 ![Program](https://img.shields.io/badge/Program-MCQST_2026-black.svg)
 
-**Authors:** Andrea Staffieri$^{1,2,3}$, Asli Çakan Cebe$^{2,3}$, Tobias Vogl$^{2,3}$.
-$^{1}$ *Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Italy*.
-$^{2}$ *School of Computation, Information and Technology, Department of Computer Engineering, Technical University of Munich, Germany*.
-$^{3}$ *Munich Center for Quantum Science and Technology (MCQST), Germany*.
+**Authors:** Andrea Staffieri$^\text{1,2,3}$, Asli Çakan Cebe$^\text{2,3}$, Tobias Vogl$^\text{2,3}$  
+$^\text{1}$ *Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Italy*.  
+$^\text{2}$ *School of Computation, Information and Technology, Department of Computer Engineering, Technical University of Munich, Germany*.  
+$^\text{3}$ *Munich Center for Quantum Science and Technology (MCQST), Germany*.
 
 ---
 
