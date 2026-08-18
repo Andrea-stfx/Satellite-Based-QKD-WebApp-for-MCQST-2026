@@ -6,6 +6,7 @@
 ![Program](https://img.shields.io/badge/Program-MCQST_2026-black.svg)
 
 **Authors:** Andrea Staffieri<sup>1,2,3</sup>, Asli Çakan Cebe<sup>2,3</sup>, Tobias Vogl<sup>2,3</sup>
+
 <sup>1</sup> <i>Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Italy.</i>  
 <sup>2</sup> <i>School of Computation, Information and Technology, Department of Computer Engineering, Technical University of Munich, Germany.</i>  
 <sup>3</sup> <i>Munich Center for Quantum Science and Technology (MCQST), Germany.</i>
