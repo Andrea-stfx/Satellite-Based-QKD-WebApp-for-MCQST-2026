@@ -5,79 +5,75 @@
 ![Institution](https://img.shields.io/badge/Institution-TUM-0065BD.svg)
 ![Program](https://img.shields.io/badge/Program-MCQST_2026-black.svg)
 
-**Authors:** Andrea Staffieri$^{1,2,3}$, Asli Çakan Cebe$^{2,3}$, Tobias Vogl$^{2,3}$[cite: 1].
-$^{1}$ *Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Italy*[cite: 1].
-$^{2}$ *School of Computation, Information and Technology, Department of Computer Engineering, Technical University of Munich, Germany*[cite: 1].
-$^{3}$ *Munich Center for Quantum Science and Technology (MCQST), Germany*[cite: 1].
+**Authors:** Andrea Staffieri$^{1,2,3}$, Asli Çakan Cebe$^{2,3}$, Tobias Vogl$^{2,3}$.
+$^{1}$ *Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Italy*.
+$^{2}$ *School of Computation, Information and Technology, Department of Computer Engineering, Technical University of Munich, Germany*.
+$^{3}$ *Munich Center for Quantum Science and Technology (MCQST), Germany*.
 
 ---
 
 ## 📌 Abstract & Project Objective
 
-Satellite-based Quantum Key Distribution (QKD) represents an emerging technology capable of providing unconditionally secure global communication[cite: 1]. Establishing a stable free-space optical link between a Low Earth Orbit (LEO) satellite and an Optical Ground Station (OGS) inherently requires a strictly unobstructed line-of-sight[cite: 1]. 
+Satellite-based Quantum Key Distribution (QKD) represents an emerging technology capable of providing unconditionally secure global communication. Establishing a stable free-space optical link between a Low Earth Orbit (LEO) satellite and an Optical Ground Station (OGS) inherently requires a strictly unobstructed line-of-sight. 
 
-A critical operational constraint arises in regions characterized by dense airspace, such as the Munich Metropolitan Area[cite: 1]. Since satellite tracking relies on high-intensity beacon lasers, strict aviation safety regulations mandate the forceful deactivation of the laser whenever an aircraft intersects the optical path[cite: 1]. This mandatory shutdown results in a temporary loss of beam alignment, effectively severing the quantum channel and causing an irrecoverable loss of cryptographic key material[cite: 1].
+A critical operational constraint arises in regions characterized by dense airspace, such as the Munich Metropolitan Area. Since satellite tracking relies on high-intensity beacon lasers, strict aviation safety regulations mandate the forceful deactivation of the laser whenever an aircraft intersects the optical path. This mandatory shutdown results in a temporary loss of beam alignment, effectively severing the quantum channel and causing an irrecoverable loss of cryptographic key material.
 
-**Objective:** To engineer a comprehensive simulation framework capable of evaluating candidate OGS locations by mathematically detecting aircraft-satellite trajectory crossings and minimizing aviation-induced cryptographic losses[cite: 1].
+**Objective:** To engineer a comprehensive simulation framework capable of evaluating candidate OGS locations by mathematically detecting aircraft-satellite trajectory crossings and minimizing aviation-induced cryptographic losses.
 
 ---
 
 ## 🚀 System Architecture and Data Pipeline
 
-To rigorously evaluate the spatial vulnerability of different locations, a deterministic simulation pipeline combining real-world aviation telemetry and orbital mechanics was constructed[cite: 1]. This multi-stage approach ensures both static geographic constraints and dynamic traffic patterns are accounted for[cite: 1].
+To rigorously evaluate the spatial vulnerability of different locations, a deterministic simulation pipeline combining real-world aviation telemetry and orbital mechanics was constructed. This multi-stage approach ensures both static geographic constraints and dynamic traffic patterns are accounted for.
 
-*   **The Geospatial Matrix:** A uniform grid of candidate OGS locations was generated across the Munich region utilizing a $5\text{ km}$ spacing[cite: 1]. This was initially referenced to a spherical Earth model, serving as the foundational framework for subsequent high-fidelity geodetic calibrations[cite: 1].
-*   **Aviation Telemetry:** Real-world flight trajectories, encompassing both arrivals and departures for Munich and Ingolstadt airports, were acquired, cleaned, and integrated directly into the simulation space[cite: 1].
-*   **Orbital Propagation:** A dataset comprising 51 distinct LEO satellite passes was generated, assuming a sun-synchronous orbit at an altitude of $500\text{ km}$ and a $98^\circ$ inclination[cite: 1]. The Right Ascension of the Ascending Node (RAAN) was varied systematically in $1^\circ$ steps to ensure an unbiased probability distribution of overhead passes[cite: 1].
+*   **The Geospatial Matrix:** A uniform grid of candidate OGS locations was generated across the Munich region utilizing a 5 km spacing. This was initially referenced to a spherical Earth model, serving as the foundational framework for subsequent high-fidelity geodetic calibrations.
+*   **Aviation Telemetry:** Real-world flight trajectories, encompassing both arrivals and departures for Munich and Ingolstadt airports, were acquired, cleaned, and integrated directly into the simulation space.
+*   **Orbital Propagation:** A dataset comprising 51 distinct LEO satellite passes was generated, assuming a sun-synchronous orbit at an altitude of 500 km and a 98° inclination. The Right Ascension of the Ascending Node (RAAN) was varied systematically in 1° steps to ensure an unbiased probability distribution of overhead passes.
 
 ---
 
 ## 🧮 Crossing Detection and Cryptographic Loss
 
-The core of the simulation relies on detecting 3D spatio-temporal intersections between aircraft trajectories and the satellite's line-of-sight vector[cite: 1]. 
+The core of the simulation relies on detecting 3D spatio-temporal intersections between aircraft trajectories and the satellite's line-of-sight vector. 
 
-*   **Intersection Mathematics:** For each candidate OGS, the algorithm formulates a Line Segment Intersection problem between the flight vector $CD$ and the instantaneous satellite-to-OGS vector $AB$[cite: 1]. This is solved via Cramer's rule to determine the exact epoch $t_c$ of the aircraft crossing[cite: 1].
-*   **The Loss Functional:** A safety margin of duration $\Delta t$ is enforced symmetrically around the crossing time $t_c$[cite: 1]. The cryptographic key forfeited during this blackout is computed by integrating the Secure Key Rate $S(t)$ over this interval[cite: 1]:
+*   **Intersection Mathematics:** For each candidate OGS, the algorithm formulates a Line Segment Intersection problem between the flight vector $CD$ and the instantaneous satellite-to-OGS vector $AB$. This is solved via Cramer's rule to determine the exact epoch $t_c$ of the aircraft crossing.
+*   **The Loss Functional:** A safety margin of duration $\Delta t$ is enforced symmetrically around the crossing time $t_c$. The cryptographic key forfeited during this blackout is computed by integrating the Secure Key Rate $S(t)$ over this interval:
 
-$$ S_{\text{loss}} = \int_{t_c-\Delta t}^{t_c+\Delta t} S(t) \, dt $$
+$$S_{\text{loss}}=\int_{t_c-\Delta t}^{t_c+\Delta t}S(t)dt$$
 
 ---
 
 ## 🌍 Geospatial Vulnerability Mapping
 
-By calculating $S_{\text{loss}}$ for every crossing across all generated passes, the aviation-induced vulnerabilities across the Bavarian airspace were mapped[cite: 1].
+By calculating $S_{\text{loss}}$ for every crossing across all generated passes, the aviation-induced vulnerabilities across the Bavarian airspace were mapped.
 
-*   **Density Analysis:** The aggregated key loss was visualized using high-resolution spatial density plots[cite: 1].
-*   **Operational Insights:** The results highlight critical "red zones" that are strictly correlated with the approach and climb-out glide slopes of Munich Airport[cite: 1]. OGS locations situated directly beneath these corridors suffer from severe communication degradation due to repeated safety blackout enforcement[cite: 1].
-*   **Kinematic Vulnerability Scaling:** Evaluating aircraft speed-versus-altitude profiles across variable satellite altitudes ($200$, $300$, $500$, and $800\text{ km}$) reveals a dynamic intersection threshold[cite: 1].
+*   **Density Analysis:** The aggregated key loss was visualized using high-resolution spatial density plots.
+*   **Operational Insights:** The results highlight critical "red zones" that are strictly correlated with the approach and climb-out glide slopes of Munich Airport. OGS locations situated directly beneath these corridors suffer from severe communication degradation due to repeated safety blackout enforcement.
+*   **Kinematic Vulnerability Scaling:** Evaluating aircraft speed-versus-altitude profiles across variable satellite altitudes (200, 300, 500, and 800 km) reveals a dynamic intersection threshold.
 
 ---
 
 ## 🔬 High-fidelity Refinements and Optimization
 
 ### I. Transition to WGS84 Ellipsoidal Geodesy
-Assuming a perfectly spherical Earth introduces severe geometric biases in laser targeting[cite: 1]. The spatial engine was therefore upgraded to the exact WGS84 reference ellipsoid[cite: 1]. 
-*   **Result:** At Munich's latitude ($48.35^\circ\text{N}$), the true surface is $4.76\text{ km}$ closer to the geocenter than a mean sphere[cite: 1]. This radial defect, combined with the geocentric latitude offset of $0.191^\circ$, propagates into an optical pointing error peaking at $900\text{ arcseconds}$ ($0.25^\circ$)[cite: 1]. For a quantum beacon laser with microradian divergence, this error causes a total target miss, proving that ellipsoidal modeling is a mandatory requirement[cite: 1].
+Assuming a perfectly spherical Earth introduces severe geometric biases in laser targeting. The spatial engine was therefore upgraded to the exact WGS84 reference ellipsoid. 
+*   **Result:** At Munich's latitude (48.35°N), the true surface is 4.76 km closer to the geocenter than a mean sphere. This radial defect, combined with the geocentric latitude offset of 0.191°, propagates into an optical pointing error peaking at 900 arcseconds (0.25°). For a quantum beacon laser with microradian divergence, this error causes a total target miss, proving that ellipsoidal modeling is a mandatory requirement.
 
 ### II. Dynamic Safety Margin Optimization
-Standard protocols assume a static blackout duration[cite: 1]. Using the Leibniz integral rule, the exact Marginal Loss Rate $dS_{\text{loss}}/d(\Delta t)$ was calculated[cite: 1].
-*   **Result:** The mathematical evaluation proves a diminishing-returns regime[cite: 1]. Extending a blackout window beyond approximately $100\text{ s}$ incurs negligible additional key loss, as atmospheric attenuation near the horizon already suppresses the channel capacity to zero[cite: 1].
+Standard protocols assume a static blackout duration. Using the Leibniz integral rule, the exact Marginal Loss Rate $dS_{\text{loss}}/d(\Delta t)$ was calculated.
+*   **Result:** The mathematical evaluation proves a diminishing-returns regime. Extending a blackout window beyond approximately 100 s incurs negligible additional key loss, as atmospheric attenuation near the horizon already suppresses the channel capacity to zero.
 
 ---
 
 ## 🔮 Conclusions and Future Developments
 
-The developed simulation framework successfully detects aircraft-satellite crossings and quantifies their impact on QKD efficiency[cite: 1]. By integrating real-world telemetry with rigorous WGS84 ellipsoidal geodesy and dynamically optimized safety margins, the model provides network architects with an exact mathematical tool to optimize OGS placement in congested airspaces[cite: 1].
+The developed simulation framework successfully detects aircraft-satellite crossings and quantifies their impact on QKD efficiency. By integrating real-world telemetry with rigorous WGS84 ellipsoidal geodesy and dynamically optimized safety margins, the model provides network architects with an exact mathematical tool to optimize OGS placement in congested airspaces.
 
 **Future Work:**
-*   Integration of dynamic weather models and atmospheric turbulence profiling[cite: 1].
-*   Implementation of real-time, flight-aware variable safety margins based on aircraft altitude and speed[cite: 1].
+*   Integration of dynamic weather models and atmospheric turbulence profiling.
+*   Implementation of real-time, flight-aware variable safety margins based on aircraft altitude and speed.
 
 ---
 
 ## 🤝 Acknowledgements
-This research was conducted as part of the MCQST Summer Bachelor Program 2026 at the Technical University of Munich (TUM), Department of Computer Engineering[cite: 1]. Special gratitude is expressed to the project supervisors, Prof. Dr. phil. Tobias Vogl and Dr. Asli Cakan Cebe, for their invaluable guidance, support, and academic direction throughout this project[cite: 1].
-
-## ⚙️ Installation & Setup
-
-To run this simulation locally, ensure you have Python 3.9+ installed.
+This research was conducted as part of the MCQST Summer Bachelor Program 2026 at the Technical University of Munich (TUM), Department of Computer Engineering. Special gratitude is expressed to the project supervisors, Prof. Dr. phil. Tobias Vogl and Dr. Asli Cakan Cebe, for their invaluable guidance, support, and academic direction throughout this project.
