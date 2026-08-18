@@ -1,4 +1,4 @@
-# Satellite QKD Systems Laboratory: Interactive Digital Twin 🛰️🔑
+# Simulation and Evaluation of Satellite-Based Quantum Key Distribution Links Under Aviation-Constrained Optical Ground Station Operation 🛰️🔑
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32%2B-red.svg)
