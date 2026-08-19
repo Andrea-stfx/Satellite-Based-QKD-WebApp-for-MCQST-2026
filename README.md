@@ -71,7 +71,7 @@ Standard protocols assume a static blackout duration. Using the Leibniz integral
 The developed simulation framework successfully detects aircraft-satellite crossings and quantifies their impact on QKD efficiency. By integrating real-world telemetry with rigorous WGS84 ellipsoidal geodesy and dynamically optimized safety margins, the model provides network architects with an exact mathematical tool to optimize OGS placement in congested airspaces.
 
 **Future Work:**
-*   Integration of dynamic weather models and atmospheric turbulence profiling..
+*   Integration of dynamic weather models and atmospheric turbulence profiling.
 *   Implementation of real-time, flight-aware variable safety margins based on aircraft altitude and speed.
 
 ---
